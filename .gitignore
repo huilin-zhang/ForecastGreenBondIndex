@@ -1,0 +1,7 @@
+# Ignore everything inside Empirical except specified files
+archive
+Data
+LSEG
+online projs
+reference
+draft.ipynb
