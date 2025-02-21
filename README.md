@@ -11,4 +11,4 @@ This project aims to forecast the Green Bond Index using machine learning techni
 - **Machine Learning**: Various machine learning models will be employed to forecast the Green Bond Index based on historical data and other relevant financial indicators. The specific methods include:
     - **ARIMA (AutoRegressive Integrated Moving Average)**
     - **LSTM (Long Short-Term Memory)**: A type of recurrent neural network (RNN) suitable for sequence prediction problems.
-    - **Random Forest**: To capture non-linear relationships and interactions between variables.
+    - **Random Forest**: This model captures non-linear relationships and interactions between variables.
