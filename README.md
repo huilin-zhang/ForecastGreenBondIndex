@@ -1,7 +1,7 @@
 # Forecast Green Bond Index
 
 ## Project Description
-This project aims to forecast the Green Bond Index using machine learning techniques. The Green Bond Index is a benchmark that measures the performance of green bonds, which are fixed-income securities designed to finance projects with positive environmental benefits.
+This project aims to forecast the Green Bond Index using machine learning techniques. Green bonds are fixed-income securities designed to finance projects with positive environmental benefits. A Green Bond Index is designed to reflect the performance of the green bond market.
 
 ## Data Sources
 1. **S&P Green Bond Index**: Data manually downloaded from [S&P Global](https://www.spglobal.com/spdji/en/indices/sustainability/sp-green-bond-index/#overview).
