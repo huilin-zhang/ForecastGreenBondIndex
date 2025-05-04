@@ -8,7 +8,7 @@ This project aims to forecast the Green Bond Index using machine learning techni
 2. **LSEG Data Library**: Data accessed via API from the London Stock Exchange Group (LSEG).
 
 ## Methodology
-- **Machine Learning**: Various machine learning models will be employed to y_pred_arima the Green Bond Index based on historical data and other relevant financial indicators. The specific methods include:
-    - **ARIMA (AutoRegressive Integrated Moving Average)**: To model and y_pred_arima time series data.
+- **Machine Learning**: Various machine learning models will be employed to forecast the Green Bond Index based on historical data and other relevant financial indicators. The specific methods include:
+    - **ARIMA (AutoRegressive Integrated Moving Average)**: To model and forecast time series data.
     - **LSTM (Long Short-Term Memory)**: A type of recurrent neural network (RNN) suitable for sequence prediction problems.
     - **Random Forest**: To capture non-linear relationships and interactions between variables.
