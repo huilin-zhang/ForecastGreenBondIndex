@@ -28,3 +28,6 @@ __pycache__/
 /dist/
 
 /examples/synthetic-demo/tuning/
+
+# Local tests
+/tests/
