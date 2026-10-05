@@ -13,7 +13,8 @@ A reproducible Python project for forecasting the **S&P Green Bond Index** from 
 index levels, market indicators, and macroeconomic data. It connects financial data engineering
 to statistical and machine learning forecasts, with an emphasis on chronological evaluation.
 
-**Explore:** [Example report](examples/synthetic-demo/report.md) ·
+**Explore:** [Interactive dashboard](examples/synthetic-demo/dashboard.html) ·
+[Example report](examples/synthetic-demo/report.md) ·
 [Quickstart notebook](notebooks/01_quickstart.ipynb) ·
 [Methodology](docs/methodology.md) · [Data contract](data/README.md)
 
@@ -66,7 +67,7 @@ greenbond demo
 
 The demo generates artificial data, trains persistence, ARIMA, baseline Random Forest and
 random-search Random Forest, and writes a fresh directory under `reports/`. View `report.md`
-and the PNG files in `figures/`. No credentials, downloads, or paid services are used.
+and the PNG files in `figures/`, or open `dashboard.html` in your browser. No credentials, downloads, or paid services are used.
 
 To include the neural network and both LSTM search methods:
 
@@ -81,6 +82,29 @@ Outputs must use a fresh directory; the CLI refuses to overwrite an existing exp
 
 Or open [the quickstart notebook](notebooks/01_quickstart.ipynb) after installing the `dev` extra.
 The neural extra pins NumPy below 2 to match TensorFlow 2.17 binary compatibility.
+
+## Interactive analytics dashboard
+
+The report now includes an English BI-style dashboard with model/date filters, KPI cards,
+forecast trends, RMSE comparison, residual analysis, rolling error, and a model scorecard.
+Metrics recalculate from the selected test dates. Fixed feature importance and experiment
+metadata retain their original scope.
+
+![Interactive dashboard preview](examples/synthetic-demo/figures/dashboard_preview.png)
+
+**Open:** Download [the offline dashboard](examples/synthetic-demo/dashboard.html) and open it
+in your browser. GitHub's repository viewer shows HTML source; the downloaded file is fully
+interactive. It needs no Python, credentials, internet connection, or running server.
+
+Every new experiment includes `dashboard.html` and a long-form `forecast_facts.csv` for Tableau
+or Power BI. Export the selected model/date window as CSV, or use **Print / Save PDF**.
+See [BI import instructions and measure templates](docs/bi-dashboard.md).
+
+Regenerate the dashboard from an existing experiment without retraining:
+
+```bash
+greenbond dashboard --report-dir examples/synthetic-demo
+```
 
 ## Example results
 
@@ -194,6 +218,11 @@ new experiments do not load them.
 
 ## Verification
 
+The offline dashboard was also checked in a browser for model/date filters, metric parity,
+CSV download, invalid-range handling, and mobile layout.
+
+Local regression tests, when the local `tests/` directory is available:
+
 ```bash
 python -m pytest -q
 ```
@@ -201,7 +230,9 @@ python -m pytest -q
 Tests verify that future observations cannot change earlier forecast features, transforms
 use training statistics, monthly observations respect the assumed availability date, conflicting
 duplicates are rejected, API caching/fallbacks behave correctly, and models score identical
-test dates. CI runs the core suite and a credential-free smoke experiment on Python 3.11/3.12.
+test dates. CI runs a credential-free reporting smoke experiment on Python 3.11/3.12 and
+checks dashboard generation, BI table structure, and metric consistency. The local `tests/`
+directory remains excluded from Git by the repository settings; CI runs that suite when included.
 Neural models are verified separately with the full demo command above; live API requests
 require an entitled session and are not exercised by mock contract tests.
 

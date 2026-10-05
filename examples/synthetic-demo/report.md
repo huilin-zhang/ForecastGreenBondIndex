@@ -1,5 +1,7 @@
 # Forecasting the Green Bond Index: experiment report
 
+[Open the interactive dashboard](dashboard.html) · [Tableau / Power BI data](forecast_facts.csv)
+
 **Data:** Synthetic demonstration. **Horizon:** next observed index date. **Test observations:** 175.
 
 All models forecast the same dates in original index units. Predictors are shifted by one observation.

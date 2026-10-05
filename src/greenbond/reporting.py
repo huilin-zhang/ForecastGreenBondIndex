@@ -76,11 +76,15 @@ def write_report(output: Path, frame, y, test_start, predictions, metadata, impo
     fig.tight_layout()
     fig.savefig(figures / "feature_importance.png", dpi=160)
     plt.close(fig)
+    from .dashboard import write_dashboard
+    write_dashboard(output)
     table = ["| Model | MAE | RMSE | R2 | MSE skill vs naive |",
              "| :--- | ---: | ---: | ---: | ---: |"]
     for row in metrics.to_dict("records"):
         table.append(f"| {row['model']} | {row['mae']:.4f} | {row['rmse']:.4f} | {row['r2']:.4f} | {row['mse_skill_vs_naive']:.2%} |")
     report = f"""# Forecasting the Green Bond Index: experiment report
+
+[Open the interactive dashboard](dashboard.html) · [Tableau / Power BI data](forecast_facts.csv)
 
 **Data:** {qualifier}. **Horizon:** next observed index date. **Test observations:** {len(actual)}.
 

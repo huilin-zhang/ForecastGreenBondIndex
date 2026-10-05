@@ -30,6 +30,8 @@ def main():
         else:
             command.add_argument("--data-dir", type=Path, default=Path("Data"))
             command.add_argument("--macro-lag-days", type=int, default=45)
+    dashboard = sub.add_parser("dashboard", help="Create a BI-style report from an existing experiment")
+    dashboard.add_argument("--report-dir", type=Path, required=True)
     etl = sub.add_parser("prepare", help="Join local CSV inputs on the index calendar")
     etl.add_argument("--target", type=Path, required=True)
     etl.add_argument("--daily", type=Path, required=True)
@@ -44,6 +46,10 @@ def main():
     api.add_argument("--cache", type=Path, default=Path("data/raw/lseg"))
     args = parser.parse_args()
     try:
+        if args.command == "dashboard":
+            from .dashboard import write_dashboard
+            print(f"Dashboard: {write_dashboard(args.report_dir)}")
+            return
         if args.command == "extract":
             from .lseg import download
             frame = download(args.instruments, args.start, args.end, args.cache, args.config)

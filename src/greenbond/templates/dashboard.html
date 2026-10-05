@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GreenBond Analytics | Forecast performance</title>
+<style>
+:root{--ink:#192537;--muted:#627286;--green:#087f6b;--green-light:#e5f3ed;--bg:#f1f4f8;--line:#e5eaf0;--nav:#102b35;--warn:#9c4e16}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,"Segoe UI",Arial,sans-serif;font-size:14px;line-height:1.5}
+button,input,select{font:inherit}button,a,input,select{outline-offset:4px}button{cursor:pointer}button:disabled{cursor:default;opacity:.5}
+.shell{display:grid;grid-template-columns:224px minmax(0,1fr);min-height:100vh}.sidebar{background:var(--nav);color:#d7e5e9;padding:28px 22px;position:sticky;top:0;height:100vh;display:flex;flex-direction:column;gap:22px}
+.brand{display:flex;align-items:center;gap:11px}.brand-mark{width:32px;height:32px;border-radius:9px;background:#31b997;color:#082f34;display:grid;place-items:center;font-size:21px;font-weight:800}.brand-name{font-size:20px;font-weight:700;letter-spacing:-.5px}.brand-sub{font-size:11px;letter-spacing:1.8px;color:#9cb4bc;text-transform:uppercase}
+.side-label{font-size:10px;text-transform:uppercase;letter-spacing:1.7px;color:#92aeb7;margin:0 0 10px}.sidebar nav{display:grid;gap:5px}.sidebar nav a{color:#b9cdd4;text-decoration:none;padding:10px 12px;border-radius:7px;font-size:13px}.sidebar nav a:first-child{background:#214750;color:#a4e6cf}.sidebar nav a:hover{background:#214750}
+.filters{border-top:1px solid #2c4750;padding-top:20px}.field{display:grid;gap:6px;margin-bottom:16px}.field label{font-size:11px;color:#b8cdd4;font-weight:600}.field input,.field select{width:100%;min-width:0;background:#193b45;border:1px solid #3c5660;color:#fff;border-radius:6px;padding:9px 8px;font-size:12px;color-scheme:dark}.field select{white-space:normal}.sidebar .quick{display:flex;gap:5px;flex-wrap:wrap}.quick button{border:1px solid #405b64;background:transparent;color:#cbdee4;border-radius:5px;padding:6px 8px;font-size:11px}.quick button:hover{background:#2b5059}.side-footer{margin-top:auto;padding-top:16px;border-top:1px solid #2c4750;color:#a8bfc7;font-size:11px;line-height:1.8}.side-footer strong{color:#d5e9ed;font-weight:500}
+main{min-width:0;padding:26px 30px 30px;max-width:1800px;width:100%}.header{display:flex;justify-content:space-between;gap:20px;align-items:center;margin-bottom:17px}.breadcrumb{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:1.3px}h1{font-size:29px;letter-spacing:-.9px;margin:4px 0 3px;font-weight:700}.subtitle{color:var(--muted);font-size:13px;margin:0}.actions{display:flex;gap:8px;flex-wrap:wrap}.btn{padding:9px 13px;border:1px solid #d4dce5;border-radius:6px;background:#fff;color:#324558;font-size:12px;font-weight:600}.btn.primary{background:var(--green);border-color:var(--green);color:#fff}.btn:hover{filter:brightness(.96)}
+.source-banner{display:flex;align-items:center;justify-content:space-between;gap:16px;background:#fff8ed;border:1px solid #f1dfbf;border-radius:7px;padding:10px 13px;margin-bottom:18px;font-size:12px;color:#82501f}.source-banner.local{background:#e9f3f7;border-color:#ccdfe9;color:#245363}.source-banner strong{font-weight:650}.source-banner .badge{font-size:10px;letter-spacing:.8px;white-space:nowrap;text-transform:uppercase}.context{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:12px}.context .selected{font-size:13px;font-weight:600}.context .period{font-size:12px;color:var(--muted)}.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-bottom:18px}.kpi{background:#fff;border:1px solid var(--line);border-radius:9px;padding:16px 19px;position:relative}.kpi:first-child{border-top:3px solid var(--green);padding-top:14px}.kpi-label{color:var(--muted);font-size:11px;font-weight:650;letter-spacing:.7px;text-transform:uppercase}.kpi-value{font-size:31px;font-weight:650;letter-spacing:-1.2px;line-height:1.3;margin:6px 0}.kpi-sub{color:var(--muted);font-size:11px}.positive{color:var(--green)}.negative{color:#a24838}
+.grid{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(0,1fr);gap:18px;margin-bottom:18px}.panel{min-width:0;background:#fff;border:1px solid var(--line);border-radius:9px;overflow:hidden}.panel-header{padding:16px 19px 0;display:flex;justify-content:space-between;gap:15px;align-items:flex-start}.panel h2{font-size:14px;font-weight:650;letter-spacing:-.2px;margin:0}.panel p{font-size:11px;color:var(--muted);margin:4px 0 0}.panel-tag{font-size:10px;color:var(--muted);white-space:nowrap;background:#f3f6f8;border-radius:4px;padding:4px 7px}.chart{height:276px;width:100%}.chart.compact{height:242px}.panel-foot{margin:0 19px 13px;color:var(--muted);font-size:10px}.model-table{width:100%;border-collapse:collapse;font-size:12px}.table-scroll{overflow-x:auto;margin:14px 19px 18px}.model-table th{text-align:right;color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.6px;padding:10px 12px;border-bottom:1px solid var(--line);white-space:nowrap}.model-table th:first-child,.model-table td:first-child{text-align:left}.model-table td{padding:10px 12px;text-align:right;border-bottom:1px solid #edf1f5;white-space:nowrap;font-variant-numeric:tabular-nums}.model-table tbody tr.active{background:#edf7f3}.model-table tbody tr:hover{background:#f5f8fb}.model-table tbody tr{cursor:pointer}.selected-dot{display:inline-block;width:6px;height:6px;margin-right:7px;border-radius:50%;background:var(--green)}
+.metadata{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;padding:16px 19px 18px}.metadata span{display:block;font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}.metadata strong{font-size:12px;font-weight:500;word-break:break-word}.note{font-size:11px;color:var(--muted);margin:18px 2px 0;line-height:1.7}.footline{display:flex;gap:18px;flex-wrap:wrap;margin-top:9px}.footline a{color:var(--green);text-decoration:none}.error{background:#fff1ee;color:#8f3425;border:1px solid #f0ccc3;padding:12px 15px;border-radius:7px;margin-bottom:16px}.error[hidden]{display:none}
+@media(min-width:1650px){main{padding:32px 40px}.chart{height:310px}}
+@media(max-width:1100px){.shell{grid-template-columns:190px minmax(0,1fr)}.sidebar{padding:24px 16px}main{padding:22px 20px}.grid{grid-template-columns:1fr}.kpi{padding:13px}.kpi-value{font-size:27px}.header{align-items:flex-start}.chart{height:300px}.metadata{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:700px){.shell{display:block}.sidebar{position:relative;height:auto;padding:18px;gap:15px}.sidebar nav,.side-footer{display:none}.filters{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding-top:12px}.filters .side-label{grid-column:1/-1;margin:0}.filters .field{margin:0}.filters .field:first-of-type{grid-column:1/-1}.filters .quick{grid-column:1/-1}.header{display:block}.actions{margin-top:12px}main{padding:20px 14px}.kpis{grid-template-columns:1fr 1fr;gap:10px}.context{display:block}.context .period{margin-top:4px}.source-banner{align-items:flex-start}.source-banner .badge{display:none}.panel-header{padding:14px 13px 0}.panel-tag{display:none}h1{font-size:26px}.chart{height:290px}.metadata{gap:14px;padding:16px 14px}.table-scroll{margin:12px}.kpi-value{font-size:28px}}
+@media print{@page{size:landscape;margin:12mm}body{background:#fff;font-size:10px}.shell{display:block}.sidebar,.actions,.modebar,.footline{display:none!important}main{padding:0;max-width:none}.header{margin-bottom:10px}h1{font-size:22px}.grid{grid-template-columns:1.65fr 1fr;gap:10px}.kpis{gap:10px}.panel,.kpi{break-inside:avoid}.chart,.chart.compact{height:235px}.source-banner{margin-bottom:12px}.metadata{font-size:10px}.note{font-size:9px}}
+</style>
+<script>__PLOTLY__</script>
+<script id="experiment-data" type="application/json">__DATA__</script>
+</head>
+<body>
+<div class="shell">
+<aside class="sidebar" aria-label="Report navigation and filters">
+<div class="brand"><div class="brand-mark" aria-hidden="true">G</div><div><div class="brand-name">GreenBond</div><div class="brand-sub">Analytics studio</div></div></div>
+<div><p class="side-label">Workspace</p><nav><a href="#overview">Forecast overview</a><a href="#errors">Error analysis</a><a href="#drivers">Model drivers</a><a href="#scorecard">Model scorecard</a></nav></div>
+<div class="filters"><p class="side-label">Report filters</p>
+<div class="field"><label for="model">Forecast model</label><select id="model"></select></div>
+<div class="field"><label for="start">From date</label><input id="start" type="date"></div>
+<div class="field"><label for="end">Through date</label><input id="end" type="date"></div>
+<div class="quick" aria-label="Quick date windows"><button type="button" data-window="all">Full test</button><button type="button" data-window="90">Last 90</button><button type="button" data-window="30">Last 30</button></div>
+</div>
+<div class="side-footer" id="side-info"></div>
+</aside>
+<main id="overview">
+<header class="header"><div><div class="breadcrumb">Research / Sustainable finance</div><h1>Forecast performance</h1><p class="subtitle">Green Bond Index · Rolling one-step evaluation</p></div><div class="actions"><button id="export" type="button" class="btn primary">Export filtered CSV</button><button id="print" type="button" class="btn">Print / Save PDF</button></div></header>
+<div class="source-banner" id="source-banner"><div><strong id="source-name"></strong><span id="source-detail"></span></div><span class="badge">Research experiment</span></div>
+<div class="context"><div class="selected" id="selected-model"></div><div class="period" id="period"></div></div>
+<div class="error" id="filter-error" role="alert" hidden></div>
+<section class="kpis" aria-label="Selected model metrics" aria-live="polite">
+<div class="kpi"><div class="kpi-label">Forecast RMSE</div><div class="kpi-value" id="rmse">—</div><div class="kpi-sub">Index points · Lower is better</div></div>
+<div class="kpi"><div class="kpi-label">Mean absolute error</div><div class="kpi-value" id="mae">—</div><div class="kpi-sub">Index points · Selected period</div></div>
+<div class="kpi"><div class="kpi-label">Skill vs persistence</div><div class="kpi-value" id="skill">—</div><div class="kpi-sub">MSE improvement vs last value</div></div>
+<div class="kpi"><div class="kpi-label">Test observations</div><div class="kpi-value" id="count">—</div><div class="kpi-sub" id="coverage">Shared forecast dates</div></div>
+</section>
+<div id="dashboard-content">
+<div class="grid">
+<section class="panel"><div class="panel-header"><div><h2>Observed vs forecast</h2><p>Selected model and last-value persistence on the same dates</p></div><span class="panel-tag">Index points</span></div><div class="chart" id="forecast" role="img" aria-label="Observed and predicted index levels over the selected test dates"></div></section>
+<section class="panel"><div class="panel-header"><div><h2>Model error comparison</h2><p>All models · Selected period · Lower is better</p></div><span class="panel-tag">RMSE</span></div><div class="chart" id="comparison" role="img" aria-label="Test RMSE for each model"></div><div class="panel-foot">Descriptive test comparison; model parameters were selected before testing.</div></section>
+</div>
+<div class="grid" id="errors">
+<section class="panel"><div class="panel-header"><div><h2>Forecast residuals</h2><p>Observed minus predicted · Zero indicates a perfect forecast</p></div><span class="panel-tag">Index points</span></div><div class="chart compact" id="residuals" role="img" aria-label="Forecast errors by date for the selected model"></div></section>
+<section class="panel"><div class="panel-header"><div><h2>Error distribution</h2><p>Selected model · Frequency of forecast residuals</p></div><span class="panel-tag">Observations</span></div><div class="chart compact" id="distribution" role="img" aria-label="Histogram of selected model forecast errors"></div></section>
+</div>
+<div class="grid" id="drivers">
+<section class="panel"><div class="panel-header"><div><h2>Rolling forecast error</h2><p>20-observation RMSE · Windows fully inside the selected period</p></div><span class="panel-tag">Index points</span></div><div class="chart compact" id="rolling" role="img" aria-label="Rolling 20-observation root mean squared forecast error"></div></section>
+<section class="panel"><div class="panel-header"><div><h2>Random Forest feature importance</h2><p id="importance-caption">Fixed fitted-model importance · Not affected by date filters</p></div><span class="panel-tag">Top 8</span></div><div class="chart compact" id="importance" role="img" aria-label="Top eight feature importances of the fitted Random Forest"></div></section>
+</div>
+<section class="panel" id="scorecard"><div class="panel-header"><div><h2>Model scorecard</h2><p>Metrics recalculate with date filters. Select a row to inspect its forecasts.</p></div><span class="panel-tag">Same dates / Same units</span></div><div class="table-scroll"><table class="model-table"><thead><tr><th scope="col">Model</th><th scope="col">MAE</th><th scope="col">RMSE</th><th scope="col">MSE</th><th scope="col">R²</th><th scope="col">MSE skill</th></tr></thead><tbody id="scores"></tbody></table></div></section>
+</div>
+<section class="panel" style="margin-top:18px"><div class="panel-header"><div><h2>Experiment details</h2><p>Fixed experiment metadata · Filters change the displayed test period only</p></div></div><div class="metadata" id="metadata"></div></section>
+<footer class="note">Forecasts use information through the preceding observation. Positive MSE skill indicates lower error than last-value persistence; negative skill indicates worse performance. High R² on persistent index levels alone does not establish investment value. Feature importance is descriptive, not causal.<div class="footline"><a href="report.md">Written report</a><a href="run.json">Run metadata</a><a href="forecast_facts.csv">BI data table</a><a href="metrics.csv">Full-test metrics</a></div></footer>
+<noscript><p class="error">Enable JavaScript to use this interactive report. The CSV and Markdown artifacts remain available.</p></noscript>
+</main>
+</div>
+<script>
+(()=>{
+'use strict';
+const DATA=JSON.parse(document.getElementById('experiment-data').textContent);
+const NAIVE='Naive (last value)',GREEN='#087f6b',SLATE='#8a9aaa',INK='#223044';
+const $=id=>document.getElementById(id), names=Object.keys(DATA.models);
+const text=(id,value)=>{$(id).textContent=value;};
+const number=(value,digits=4)=>Number.isFinite(value)?value.toFixed(digits):'—';
+const percentage=value=>Number.isFinite(value)?`${value>0?'+':''}${(value*100).toFixed(2)}%`:'—';
+const mean=values=>values.reduce((sum,v)=>sum+v,0)/values.length;
+const plots=['forecast','comparison','residuals','distribution','rolling','importance'];
+const chartConfig={responsive:true,displaylogo:false,scrollZoom:false,modeBarButtonsToRemove:['select2d','lasso2d'],toImageButtonOptions:{format:'png',scale:2}};
+let currentIndices=[],generation=0;
+function layout(yTitle,extra={}){
+ return {paper_bgcolor:'rgba(0,0,0,0)',plot_bgcolor:'#ffffff',font:{family:'Inter, Segoe UI, Arial, sans-serif',size:10,color:'#627286'},margin:{l:54,r:19,t:18,b:48},
+ xaxis:{showgrid:false,zeroline:false,automargin:true},yaxis:{title:{text:yTitle,font:{size:10}},gridcolor:'#edf1f5',zeroline:false,automargin:true},
+ legend:{orientation:'h',x:0,y:1.13,font:{size:10}},hovermode:'x unified',...extra};
+}
+function stats(model,indices){
+ const actual=indices.map(i=>DATA.actual[i]),errors=indices.map(i=>DATA.actual[i]-DATA.models[model][i]);
+ const mse=mean(errors.map(e=>e*e)),baseline=mean(indices.map(i=>(DATA.actual[i]-DATA.models[NAIVE][i])**2));
+ const average=mean(actual),total=actual.reduce((sum,v)=>sum+(v-average)**2,0);
+ return {model,mae:mean(errors.map(Math.abs)),rmse:Math.sqrt(mse),mse,r2:total>0?1-errors.reduce((sum,e)=>sum+e*e,0)/total:null,skill:baseline>0?1-mse/baseline:null};
+}
+function trace(x,y,name,color,width=1.6,dash='solid'){
+ return {x,y,name,type:'scatter',mode:'lines',line:{color,width,dash},hovertemplate:'%{y:.4f}<extra>%{fullData.name}</extra>'};
+}
+function metadata(label,value){
+ const block=document.createElement('div'),heading=document.createElement('span'),body=document.createElement('strong');heading.textContent=label;body.textContent=value;block.append(heading,body);$('metadata').append(block);
+}
+names.forEach(name=>{const option=document.createElement('option');option.value=name;option.textContent=name;$('model').append(option);});
+$('model').value=names.includes('Random Forest (random search)')?'Random Forest (random search)':names.includes('Random Forest')?'Random Forest':NAIVE;
+const first=DATA.dates[0],last=DATA.dates[DATA.dates.length-1];
+for(const id of ['start','end']){$(id).min=first;$(id).max=last;}
+$('start').value=first;$('end').value=last;
+const meta=DATA.metadata,synthetic=meta.source==='synthetic';
+text('source-name',synthetic?'Synthetic demonstration':'Local-data experiment');
+text('source-detail',synthetic?' · Artificial observations for workflow demonstration; not a real-market benchmark.':' · Locally supplied observations; availability and data-vintage assumptions apply.');
+if(!synthetic)$('source-banner').classList.add('local');
+const sideRows=[['Forecast horizon','Next observation'],['Input observations',meta.quality.rows.toLocaleString()],['Engineered features',meta.feature_count],['Experiment seed',meta.seed]];
+sideRows.forEach(([label,value])=>{const div=document.createElement('div');div.textContent=`${label}: `;const strong=document.createElement('strong');strong.textContent=value;div.append(strong);$('side-info').append(div);});
+metadata('Training window',`${meta.splits.train_start} – ${meta.splits.train_end}`);
+metadata('Validation window',`${meta.splits.validation_start} – ${meta.splits.validation_end}`);
+metadata('Full test window',`${meta.splits.test_start} – ${meta.splits.test_end}`);
+metadata('Train / Validation / Test',`${meta.splits.train_rows} / ${meta.splits.validation_rows} / ${meta.splits.test_rows}`);
+metadata('ARIMA order',`(${(meta.arima.order||[]).join(', ')}) · Training AIC`);
+metadata('Search budgets',`${meta.random_forest?.trials||0} RF / ${meta.lstm?.random?.trials||0} LSTM random / ${meta.lstm?.bayesian?.trials||0} LSTM Bayesian`);
+metadata('Monthly availability lag',meta.macro_lag_days===null||meta.macro_lag_days===undefined?'Not used':`${meta.macro_lag_days} calendar days (assumed)`);
+metadata('Input fingerprint',meta.input_sha256.slice(0,16)+'…');
+text('importance-caption',`${DATA.importance_model} · Fixed training importance; date filters do not change it`);
+async function render(){
+ const version=++generation,selected=$('model').value,from=$('start').value,to=$('end').value;
+ currentIndices=DATA.dates.map((date,i)=>date>=from&&date<=to?i:-1).filter(i=>i>=0);
+ text('selected-model',`Selected model: ${selected}`);
+ const invalid=!from||!to||from>to||!currentIndices.length;
+ $('filter-error').hidden=!invalid;$('dashboard-content').hidden=invalid;$('export').disabled=invalid;
+ if(invalid){text('filter-error','Choose a valid date range containing at least one test observation.');['rmse','mae','skill','count'].forEach(id=>text(id,'—'));text('period','No observations in the selected range');return;}
+ const indices=currentIndices,dates=indices.map(i=>DATA.dates[i]),actual=indices.map(i=>DATA.actual[i]),predicted=indices.map(i=>DATA.models[selected][i]),naive=indices.map(i=>DATA.models[NAIVE][i]);
+ const score=stats(selected,indices),scores=names.map(name=>stats(name,indices));
+ text('rmse',number(score.rmse));text('mae',number(score.mae));text('skill',percentage(score.skill));text('count',indices.length.toLocaleString());
+ $('skill').className='kpi-value '+(score.skill>0?'positive':score.skill<0?'negative':'');
+ text('coverage',`${((indices.length/DATA.dates.length)*100).toFixed(1)}% of the full test block`);
+ text('period',`${dates[0]} → ${dates[dates.length-1]} · ${indices.length} observations`);
+ $('scores').replaceChildren();
+ scores.forEach(row=>{const tr=document.createElement('tr');tr.className=row.model===selected?'active':'';tr.tabIndex=0;tr.setAttribute('aria-label',`Inspect ${row.model}`);
+ const modelCell=document.createElement('td');if(row.model===selected){const dot=document.createElement('span');dot.className='selected-dot';dot.setAttribute('aria-hidden','true');modelCell.append(dot);}modelCell.append(document.createTextNode(row.model));tr.append(modelCell);
+ [number(row.mae),number(row.rmse),number(row.mse),number(row.r2),percentage(row.skill)].forEach(value=>{const cell=document.createElement('td');cell.textContent=value;tr.append(cell);});
+ const select=()=>{$('model').value=row.model;render();};tr.addEventListener('click',select);tr.addEventListener('keydown',event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();select();}});$('scores').append(tr);
+ });
+ const errors=actual.map((v,i)=>v-predicted[i]),naiveErrors=actual.map((v,i)=>v-naive[i]);
+ const forecasts=[trace(dates,actual,'Observed',INK,2.1),trace(dates,predicted,selected,GREEN,1.8)];
+ if(selected!==NAIVE)forecasts.push(trace(dates,naive,'Last-value baseline',SLATE,1.2,'dot'));
+ const ranked=[...scores].sort((a,b)=>b.rmse-a.rmse),imp=[...DATA.importance].sort((a,b)=>b.importance-a.importance).slice(0,8).reverse();
+ const rolling=(residuals)=>residuals.map((_,i)=>i<19?null:Math.sqrt(mean(residuals.slice(i-19,i+1).map(v=>v*v))));
+ const jobs=[
+ Plotly.react('forecast',forecasts,layout('Index level',{margin:{l:55,r:19,t:39,b:44}}),chartConfig),
+ Plotly.react('comparison',[{type:'bar',orientation:'h',x:ranked.map(v=>v.rmse),y:ranked.map(v=>v.model),marker:{color:ranked.map(v=>v.model===selected?GREEN:'#bfd6cf')},text:ranked.map(v=>v.rmse.toFixed(4)),textposition:'outside',cliponaxis:false,hovertemplate:'%{y}<br>RMSE: %{x:.4f}<extra></extra>'}],layout('',{margin:{l:182,r:55,t:13,b:45},hovermode:'closest',xaxis:{title:'RMSE (index points)',gridcolor:'#edf1f5',zeroline:false,range:[0,Math.max(...ranked.map(v=>v.rmse))*1.2]},yaxis:{showgrid:false,automargin:true,tickfont:{size:9}}}),chartConfig),
+ Plotly.react('residuals',[trace(dates,errors,selected,GREEN,1.5)],layout('Error (index points)',{showlegend:false,shapes:[{type:'line',xref:'paper',x0:0,x1:1,y0:0,y1:0,line:{color:'#a5b1bf',width:1,dash:'dot'}}]}),chartConfig),
+ Plotly.react('distribution',[{type:'histogram',x:errors,nbinsx:18,marker:{color:GREEN},hovertemplate:'Residual: %{x:.3f}<br>Count: %{y}<extra></extra>'}],layout('Observations',{hovermode:'closest',bargap:.08,xaxis:{title:'Residual (index points)',showgrid:false,zeroline:false},showlegend:false}),chartConfig),
+ Plotly.react('rolling',[trace(dates,rolling(errors),selected,GREEN),...(selected===NAIVE?[]:[trace(dates,rolling(naiveErrors),'Last-value baseline',SLATE,1.2,'dot')])],layout('20-observation RMSE',{margin:{l:55,r:19,t:39,b:44},annotations:indices.length<20?[{text:'Select at least 20 observations to show rolling RMSE',xref:'paper',yref:'paper',x:.5,y:.5,showarrow:false,font:{size:11}}]:[]}),chartConfig),
+ Plotly.react('importance',[{type:'bar',orientation:'h',x:imp.map(v=>v.importance),y:imp.map(v=>v.feature.replaceAll('_',' ')),marker:{color:'#61a795'},hovertemplate:'%{y}<br>Importance: %{x:.1%}<extra></extra>'}],layout('',{margin:{l:125,r:20,t:10,b:40},hovermode:'closest',xaxis:{title:'Impurity-based importance',tickformat:'.0%',gridcolor:'#edf1f5',zeroline:false},yaxis:{showgrid:false,automargin:true}}),chartConfig)
+ ];
+ await Promise.all(jobs);if(version===generation)document.documentElement.dataset.ready='true';
+}
+function csvEscape(value){const s=String(value);return /[",\n\r]/.test(s)?'"'+s.replaceAll('"','""')+'"':s;}
+$('export').addEventListener('click',()=>{
+ const model=$('model').value,rows=[['date','model','actual','prediction','naive_prediction','error','absolute_error','squared_error','naive_squared_error']];
+ currentIndices.forEach(i=>{const actual=DATA.actual[i],predicted=DATA.models[model][i],naive=DATA.models[NAIVE][i],error=actual-predicted;rows.push([DATA.dates[i],model,actual,predicted,naive,error,Math.abs(error),error*error,(actual-naive)**2]);});
+ const blob=new Blob(['\ufeff'+rows.map(row=>row.map(csvEscape).join(',')).join('\n')],{type:'text/csv;charset=utf-8;'}),url=URL.createObjectURL(blob),link=document.createElement('a');link.href=url;link.download='greenbond-filtered-forecasts.csv';document.body.append(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
+});
+$('print').addEventListener('click',()=>window.print());
+['model','start','end'].forEach(id=>$(id).addEventListener('change',()=>render().catch(error=>{text('filter-error','Unable to render the report: '+error.message);$('filter-error').hidden=false;})));
+document.querySelectorAll('[data-window]').forEach(button=>button.addEventListener('click',()=>{const windowSize=button.dataset.window;$('start').value=windowSize==='all'?first:DATA.dates[Math.max(0,DATA.dates.length-Number(windowSize))];$('end').value=last;render();}));
+window.addEventListener('beforeprint',()=>plots.forEach(id=>Plotly.Plots.resize(id)));
+render().catch(error=>{text('filter-error','Unable to render the report: '+error.message);$('filter-error').hidden=false;});
+})();
+</script>
+</body>
+</html>
