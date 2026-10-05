@@ -1,0 +1,13 @@
+{
+  "description": "Example RICs from the original project; verify instruments, fields and entitlements in Workspace.",
+  "instruments": [
+    {"name": "sp500", "ric": ".SP500", "fields": ["TR.PriceClose", "TR.CLOSEPRICE"]},
+    {"name": "msci_world", "ric": ".MIWD00000PUS", "fields": ["TR.PriceClose", "TR.CLOSEPRICE"]},
+    {"name": "crude_oil", "ric": "CLc1", "fields": ["TR.SETTLEMENTPRICE", "TR.PriceClose"]},
+    {"name": "gold", "ric": "GCc1", "fields": ["TR.SETTLEMENTPRICE", "TR.PriceClose"]},
+    {"name": "platinum", "ric": "PLc1", "fields": ["TR.SETTLEMENTPRICE", "TR.PriceClose"]},
+    {"name": "us_treasury_10y", "ric": "US10YT=RR", "fields": ["TR.MIDYIELD"]},
+    {"name": "dollar_index", "ric": ".DXY", "fields": ["TR.PriceClose", "TR.CLOSEPRICE"]},
+    {"name": "vix", "ric": ".VIX", "fields": ["TR.PriceClose", "TR.CLOSEPRICE"]}
+  ]
+}

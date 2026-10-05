@@ -1,0 +1,58 @@
+[
+  {
+    "model":"Naive (last value)",
+    "mae":0.1755509704,
+    "rmse":0.2215577046,
+    "mse":0.0490878164,
+    "r2":0.9887115023,
+    "mse_skill_vs_naive":0.0
+  },
+  {
+    "model":"ARIMA",
+    "mae":0.1740741942,
+    "rmse":0.2191102342,
+    "mse":0.0480092948,
+    "r2":0.9889595249,
+    "mse_skill_vs_naive":0.0219712706
+  },
+  {
+    "model":"Random Forest",
+    "mae":0.1955245002,
+    "rmse":0.2405542781,
+    "mse":0.0578663607,
+    "r2":0.9866927411,
+    "mse_skill_vs_naive":-0.1788334644
+  },
+  {
+    "model":"Random Forest (random search)",
+    "mae":0.1820806032,
+    "rmse":0.2268092955,
+    "mse":0.0514424565,
+    "r2":0.9881700166,
+    "mse_skill_vs_naive":-0.0479679124
+  },
+  {
+    "model":"LSTM",
+    "mae":0.1800502513,
+    "rmse":0.2282889264,
+    "mse":0.0521158339,
+    "r2":0.9880151631,
+    "mse_skill_vs_naive":-0.0616857236
+  },
+  {
+    "model":"LSTM (random search)",
+    "mae":0.1767397424,
+    "rmse":0.2232442825,
+    "mse":0.0498380097,
+    "r2":0.9885389838,
+    "mse_skill_vs_naive":-0.0152826765
+  },
+  {
+    "model":"LSTM (bayesian search)",
+    "mae":0.1913714975,
+    "rmse":0.2368777459,
+    "mse":0.0561110665,
+    "r2":0.987096398,
+    "mse_skill_vs_naive":-0.1430752186
+  }
+]

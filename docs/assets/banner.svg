@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="340" viewBox="0 0 1200 340">
+<defs><linearGradient id="bg" x2="1" y2="1"><stop stop-color="#052e2b"/><stop offset="1" stop-color="#0f4c45"/></linearGradient></defs>
+<rect width="1200" height="340" rx="16" fill="url(#bg)"/>
+<g stroke="#ffffff" stroke-opacity=".06"><path d="M0 80H1200M0 160H1200M0 240H1200M800 0V340M900 0V340M1000 0V340M1100 0V340"/></g>
+<rect x="48" y="46" width="235" height="30" rx="15" fill="#86efac" fill-opacity=".12"/>
+<text x="65" y="67" fill="#a7f3d0" font-family="Arial,sans-serif" font-size="13" letter-spacing="2">SUSTAINABLE FINANCE + ML</text>
+<text x="48" y="138" fill="#ffffff" font-family="Arial,sans-serif" font-weight="700" font-size="42">Forecasting the</text>
+<text x="48" y="193" fill="#ffffff" font-family="Arial,sans-serif" font-weight="700" font-size="42">Green Bond Index</text>
+<text x="49" y="238" fill="#b7d8cf" font-family="Arial,sans-serif" font-size="18">From financial data to reproducible forecasts.</text>
+<text x="49" y="287" fill="#a7f3d0" font-family="Arial,sans-serif" font-size="14">PYTHON / SQL / LSEG / ARIMA / RANDOM FOREST / LSTM</text>
+<g transform="translate(770 65)"><path d="M0 205L30 190L60 197L90 164L120 177L150 147L180 159L210 112L240 127L270 88L300 105L335 62" fill="none" stroke="#6ee7b7" stroke-width="4" stroke-linejoin="round"/>
+<path d="M210 112L240 103L270 75L300 83L335 37" fill="none" stroke="#fbbf24" stroke-width="3" stroke-dasharray="7 6"/>
+<circle cx="210" cy="112" r="6" fill="#ffffff"/>
+<text x="0" y="243" fill="#b7d8cf" font-family="Arial,sans-serif" font-size="12">ILLUSTRATIVE FORECAST</text></g>
+</svg>

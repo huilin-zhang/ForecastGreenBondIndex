@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "greenbond-forecast"
+version = "0.1.0"
+description = "Reproducible green bond forecasting with auditable ETL and chronological evaluation"
+readme = "README.md"
+requires-python = ">=3.11,<3.13"
+dependencies = [
+  "numpy>=1.26,<2", "pandas>=2.2,<3", "scikit-learn>=1.5,<1.7",
+  "statsmodels>=0.14.2,<0.15", "matplotlib>=3.9,<3.10",
+  "openpyxl>=3.1,<4", "xlrd>=2.0,<3",
+]
+
+[project.optional-dependencies]
+neural = ["tensorflow>=2.17,<2.18", "keras-tuner>=1.4.7,<1.5"]
+lseg = ["lseg-data>=2,<3"]
+dev = ["pytest>=8,<10", "nbformat>=5.9,<6", "nbclient>=0.9,<1", "ipykernel>=6,<7"]
+
+[project.scripts]
+greenbond = "greenbond.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

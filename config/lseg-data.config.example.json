@@ -1,0 +1,8 @@
+{
+  "sessions": {
+    "default": "desktop.workspace",
+    "desktop": {
+      "workspace": {"app-key": "REPLACE_WITH_YOUR_LOCAL_APP_KEY"}
+    }
+  }
+}

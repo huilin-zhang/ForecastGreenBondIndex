@@ -1,0 +1,82 @@
+{
+  "source": "synthetic",
+  "seed": 42,
+  "horizon": "one observation ahead",
+  "python": "3.11.1",
+  "packages": {
+    "numpy": "1.26.4",
+    "pandas": "2.3.3",
+    "scikit-learn": "1.6.1",
+    "statsmodels": "0.14.6",
+    "matplotlib": "3.9.4",
+    "tensorflow": "2.17.1",
+    "keras-tuner": "1.4.8"
+  },
+  "input_sha256": "980c099885e00f461ac0a221f9ac15b0442221a41b3f43811a618dc6d9dcd017",
+  "quality": {
+    "rows": 900,
+    "start": "2019-01-01",
+    "end": "2022-06-13",
+    "duplicate_dates": 0,
+    "missing_by_column": {
+      "green_bond_index": 0,
+      "market_signal": 0,
+      "treasury_yield": 22,
+      "volatility_index": 0
+    }
+  },
+  "feature_count": 12,
+  "macro_lag_days": null,
+  "splits": {
+    "train_start": "2019-02-11",
+    "train_end": "2021-02-09",
+    "validation_start": "2021-02-10",
+    "validation_end": "2021-10-11",
+    "test_start": "2021-10-12",
+    "test_end": "2022-06-13",
+    "train_rows": 522,
+    "validation_rows": 174,
+    "test_rows": 175
+  },
+  "arima": {
+    "order": [
+      1,
+      1,
+      1
+    ],
+    "selection": "training AIC"
+  },
+  "random_forest": {
+    "best_params": {
+      "rf__n_estimators": 240,
+      "rf__min_samples_leaf": 10,
+      "rf__max_features": 0.5,
+      "rf__max_depth": null
+    },
+    "cv_mse_changes": 0.05065457199236236,
+    "trials": 8
+  },
+  "lstm": {
+    "baseline_epochs": 9,
+    "lookback": 10,
+    "random": {
+      "best_params": {
+        "units": 64,
+        "dropout": 0.0,
+        "learning_rate": 0.003
+      },
+      "best_validation_loss": 0.7752203941345215,
+      "trials": 4
+    },
+    "bayesian": {
+      "best_params": {
+        "units": 16,
+        "dropout": 0.1,
+        "learning_rate": 0.0003
+      },
+      "best_validation_loss": 0.7686187624931335,
+      "trials": 4
+    }
+  },
+  "model_seconds": 106.697
+}

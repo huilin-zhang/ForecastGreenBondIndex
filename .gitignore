@@ -1,7 +1,30 @@
-# Ignore everything inside Empirical except specified files
-archive
-Data
-LSEG
-online projs
-reference
-draft.ipynb
+# Existing local research materials
+/archive/
+/Data/
+/LSEG/
+/online projs/
+/reference/
+/draft.ipynb
+
+# Environments, credentials, licensed inputs, and generated experiments
+/.venv/
+/myenv/
+.env
+.env.*
+!.env.example
+*lseg-data.config.json
+*refinitiv-data.config.json
+/data/raw/
+/data/processed/
+/reports/
+/lstm_tuning/
+/tuning/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ipynb_checkpoints/
+/build/
+/dist/
+
+/examples/synthetic-demo/tuning/
