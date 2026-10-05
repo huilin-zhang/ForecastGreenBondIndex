@@ -1,0 +1,10 @@
+flowchart LR
+    A["Local S&P index export"] --> C["Validate dates and values"]
+    B["LSEG API or local predictor exports"] --> C
+    C --> D["Backward-only alignment + SQL audit"]
+    D --> E["Historical features"]
+    E --> F["Chronological 60 / 20 / 20 split"]
+    F --> G["Training-fitted preprocessing"]
+    G --> H["Naive / ARIMA / Random Forest / LSTM"]
+    H --> I["Rolling one-step evaluation"]
+    I --> J["Metrics + figures + run metadata"]

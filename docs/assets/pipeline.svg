@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="480" viewBox="0 0 840 480" role="img" aria-labelledby="title desc">
+  <title id="title">Green Bond forecasting pipeline</title>
+  <desc id="desc">Local S&amp;P index export and LSEG API or local predictor exports feed date and value validation, backward-only alignment and SQL audit, historical features, a chronological 60 / 20 / 20 split, training-fitted preprocessing, Naive / ARIMA / Random Forest / LSTM, rolling one-step evaluation, and metrics, figures, and run metadata.</desc>
+  <!-- Editable diagram source: pipeline.mmd. Arrows follow the rows in alternating directions. -->
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#0f766e"/>
+    </marker>
+  </defs>
+  <rect width="840" height="480" rx="12" fill="#ffffff"/>
+  <g fill="none" stroke="#0f766e" stroke-width="2" stroke-linejoin="round">
+    <path d="M204 88 V112 H132"/>
+    <path d="M636 88 V112 H132"/>
+    <path d="M132 112 V134" marker-end="url(#arrow)"/>
+    <path d="M240 174 H308" marker-end="url(#arrow)"/>
+    <path d="M528 174 H596" marker-end="url(#arrow)"/>
+    <path d="M708 210 V248" marker-end="url(#arrow)"/>
+    <path d="M600 288 H532" marker-end="url(#arrow)"/>
+    <path d="M312 288 H244" marker-end="url(#arrow)"/>
+    <path d="M132 324 V370" marker-end="url(#arrow)"/>
+    <path d="M240 410 H308" marker-end="url(#arrow)"/>
+  </g>
+  <g fill="#ecfdf5" stroke="#0f766e" stroke-width="1.5">
+    <rect x="24" y="24" width="360" height="64" rx="8"/>
+    <rect x="456" y="24" width="360" height="64" rx="8"/>
+    <rect x="24" y="138" width="216" height="72" rx="8"/>
+    <rect x="312" y="138" width="216" height="72" rx="8"/>
+    <rect x="600" y="138" width="216" height="72" rx="8"/>
+    <rect x="600" y="252" width="216" height="72" rx="8"/>
+    <rect x="312" y="252" width="216" height="72" rx="8"/>
+    <rect x="24" y="252" width="216" height="72" rx="8"/>
+    <rect x="24" y="374" width="216" height="72" rx="8"/>
+    <rect x="312" y="374" width="504" height="72" rx="8"/>
+  </g>
+  <g fill="#134e4a" font-family="Arial, sans-serif" font-size="17" text-anchor="middle">
+    <text x="204" y="62">Local S&amp;P index export</text>
+    <text x="636" y="51"><tspan x="636">LSEG API or local</tspan><tspan x="636" dy="22">predictor exports</tspan></text>
+    <text x="132" y="169"><tspan x="132">Validate dates</tspan><tspan x="132" dy="22">and values</tspan></text>
+    <text x="420" y="169" font-size="16"><tspan x="420">Backward-only alignment</tspan><tspan x="420" dy="22">+ SQL audit</tspan></text>
+    <text x="708" y="180">Historical features</text>
+    <text x="708" y="283"><tspan x="708">Chronological</tspan><tspan x="708" dy="22">60 / 20 / 20 split</tspan></text>
+    <text x="420" y="283"><tspan x="420">Training-fitted</tspan><tspan x="420" dy="22">preprocessing</tspan></text>
+    <text x="132" y="283" font-size="16"><tspan x="132">Naive / ARIMA /</tspan><tspan x="132" dy="22">Random Forest / LSTM</tspan></text>
+    <text x="132" y="405"><tspan x="132">Rolling one-step</tspan><tspan x="132" dy="22">evaluation</tspan></text>
+    <text x="564" y="416">Metrics + figures + run metadata</text>
+  </g>
+</svg>

@@ -35,18 +35,7 @@ to statistical and machine learning forecasts, with an emphasis on chronological
 
 ## Pipeline
 
-```mermaid
-flowchart LR
-    A[Local S&amp;P index export] --> C[Validate dates and values]
-    B[LSEG API or local predictor exports] --> C
-    C --> D[Backward-only alignment + SQL audit]
-    D --> E[Historical features]
-    E --> F[Chronological 60 / 20 / 20 split]
-    F --> G[Training-fitted preprocessing]
-    G --> H[Naive / ARIMA / Random Forest / LSTM]
-    H --> I[Rolling one-step evaluation]
-    I --> J[Metrics + figures + run metadata]
-```
+![Forecasting pipeline: index and predictor inputs, validation, alignment, historical features, chronological split, preprocessing, models, rolling evaluation, and reporting](docs/assets/pipeline.svg)
 
 The forecast uses information through the previous observed index date. ARIMA updates its
 state after each forecast; all models can use earlier realized observations for subsequent
